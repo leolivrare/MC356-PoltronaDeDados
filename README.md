@@ -2,6 +2,6 @@
 
 ## Membros
 
-### Leonardo Livrare - 220120
-### Pedro Pupo Alves - 204729
-### Pedro Strambeck - 204759
+* Leonardo Livrare - 220120
+* Pedro Pupo Alves - 204729
+* Pedro Strambeck - 204759
