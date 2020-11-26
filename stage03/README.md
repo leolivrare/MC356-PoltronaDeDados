@@ -1,50 +1,12 @@
-# Etapa 3 - Primeiros Modelos e Análises
-
-## Motivação e Contexto
-
-Devido a pandemia presente no ano de 2020, achamos relevante analisar dados referentes ao novo Coronavírus a fim de relacioná-los às características socioeconômicas de diversos países. Dessa forma, podemos utilizar dados referentes à saúde, educação e índices econômicos para determinar como tais fatores refletem na resposta de cada país perante a pandemia.
-
-## Método
-
-A metodologia do projeto seguirá o seguinte esquema:
-
-![Metodologia](Images/Metodologia.png)
-
-## Modelo Conceitual
-
-![ModeloC](Images/Modelo-Conceitual.png)
-
-
-## Modelo Lógico
-
-![ModeloL](Images/Modelo-Logico.png)
-
-## Bases de Dados
-
-| Base   |  Link  |  Descrição |
-|----------|:-------------:|------:|
-| Covid-19 Dataset |  https://covid19api.com/ | Dados variados sobre COVID-19 de cada país, como, por exemplo, total de casos, total de mortes, etc. |
-| World Development Dataset |    https://databank.worldbank.org/source/world-development-indicators   |  Dataset tabular contendo diversas informações e indicadores sobre a economia, saúde, aspectos da população em geral, entre outras áreas.  |
-| World Education Dataset | https://databank.worldbank.org/source/education-statistics-%5e-all-indicators | Dataset contém informações variadas sobre a educação de diversos países. |
-
-
 # Etapa 03 - Análises com o Primeiro Modelo Lógico
 
 ## Primeiro Modelo Conceitual
 
-> Coloque aqui a imagem do primeiro modelo conceitual em ER ou UML, como o exemplo a seguir:
-> ![ER Taxi](images/er-taxi.png)
+![ModeloC](assets/Modelo-Conceitual.png)
 
 ## Primeiros Modelos Lógicos
 
-> Coloque aqui os primeiros modelos lógicos dos bancos de dados relacionados aos modelos conceituais. Para o modelo relacional, sugere-se o formato a seguir. Para outros modelos lógicos o formato é livre, pode ser adotado aqueles apresentados em sala.
-
-> Exemplo de modelo lógico relacional
-~~~
-PESSOA(_Código_, Nome, Telefone)
-ARMÁRIO(_Código_, Tamanho, Ocupante)
-  Ocupante chave estrangeira -> PESSOA(Código)
-~~~
+![ModeloL](assets/Modelo-Logico.png)
 
 ## Primeiro programa de extração e conversão de dados
 
@@ -55,11 +17,12 @@ ARMÁRIO(_Código_, Tamanho, Ocupante)
 > Coloque um link para o arquivo do notebook que executa o conjunto de queries. Ele estará dentro da pasta `notebook`. Se por alguma razão o código não for executável no Jupyter, coloque na pasta `src`. Se as queries forem executadas atraves de uma interface de um SGBD não executável no Jupyter, como o Cypher, apresente na forma de markdown.
 
 ## Bases de Dados
-> Elencar as bases de dados utilizadas no projeto. Trata-se de uma atualização daquelas apresentadas na Etapa 2.
 
-título da base | link | breve descrição
------ | ----- | -----
-`<título da base>` | `<link para a página da base>` | `<breve descrição da base>`
+| Base   |  Link  |  Descrição |
+|----------|:-------------:|------:|
+| Covid-19 Dataset |  https://covid19api.com/ | Dados variados sobre COVID-19 de cada país, como, por exemplo, total de casos, total de mortes, etc. |
+| World Development Dataset |    https://databank.worldbank.org/source/world-development-indicators   |  Dataset tabular contendo diversas informações e indicadores sobre a economia, saúde, aspectos da população em geral, entre outras áreas.  |
+| World Education Dataset | https://databank.worldbank.org/source/education-statistics-%5e-all-indicators | Dataset contém informações variadas sobre a educação de diversos países. |
 
 
 ## Arquivos de Dados
