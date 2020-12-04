@@ -1,4 +1,4 @@
-# Etapa 03 - Análises com o Primeiro Modelo Lógico
+# Etapa 03 - Análises com o Segundo Modelo Lógico
 
 ## Primeiro Modelo Conceitual
 
