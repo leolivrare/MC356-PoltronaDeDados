@@ -1,6 +1,6 @@
 # Etapa 05 - Projeto final
 
-## Slides da Proposta
+## Apresentação Final do Projeto
 
 Os slides podem ser visualizados em [slides](Slides/Slides_05.pdf).
 
