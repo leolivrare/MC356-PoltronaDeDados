@@ -22,7 +22,7 @@ A metodologia do projeto seguirá o seguinte esquema:
 
 ![ModeloL](assets/Modelo-Logico.png)
 
-## Extração e conversão de dados
+## Tratamento dos dados
 
 O conjunto de requests está em [WorldBank](notebooks/tratamento_dados_worldBank.ipynb) e [WorldBank](notebooks/insere_dados_worldBank_no_postgres.ipynb).
 
