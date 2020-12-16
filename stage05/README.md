@@ -2,7 +2,7 @@
 
 ## Slides da Proposta
 
-Os slides podem ser visualizados em [slides](Slides/Slides_05.pdf).
+Os slides podem ser visualizados em [slides](slides/MC356_Final.pdf).
 
 ## Motivação e Contexto
 
@@ -24,11 +24,11 @@ A metodologia do projeto seguirá o seguinte esquema:
 
 ## Extração e conversão de dados
 
-O conjunto de requests está em [stage4-covid-api](notebooks/stage3-covid-api.ipynb).
+O conjunto de requests está em [WorldBank](notebooks/tratamento_dados_worldBank.ipynb) e [WorldBank](notebooks/insere_dados_worldBank_no_postgres.ipynb).
 
 ## Queries
 
-O conjunto de queries está em [stage4-queries](notebooks/stage-3-queries.ipynb).
+O conjunto de queries está em [Queries](notebooks/WordBank_queries.ipynb).
 
 ## Bases de Dados
 
@@ -43,7 +43,7 @@ O conjunto de queries está em [stage4-queries](notebooks/stage-3-queries.ipynb)
 
 nome do arquivo | link | breve descrição
 ----- | ----- | -----
-`countries.csv` | [link](data/countries.csv) | `Lista de países e seus códigos`
-`fist_case.csv` | [link](data/first_case.csv) | `Lista de países e seus primeiros casos de covid`
-`summary.csv` | [link](data/summary.csv) | `Lista de países e dados gerais sonbre a covid`
-`world_development_indicators.csv` | [link](data/world_development_indicators.csv) | `Lista de países e diversos indicatores agrupados nas tabelas do modelo lógico`
+`countries.csv` | [link](../stage04/data/countries.csv) | `Lista de países e seus códigos`
+`fist_case.csv` | [link](../stage04/data/first_case.csv) | `Lista de países e seus primeiros casos de covid`
+`summary.csv` | [link](../stage04/data/summary.csv) | `Lista de países e dados gerais sonbre a covid`
+`world_development_indicators.csv` | [link](../stage04/data/world_development_indicators.csv) | `Lista de países e diversos indicatores agrupados nas tabelas do modelo lógico`
