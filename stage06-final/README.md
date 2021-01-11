@@ -213,7 +213,7 @@ order by h2.health_expenditure_per_capita desc
 ```
 A qual teve como resultado:
 
-![df_health_pib](df_health_pib.jpeg)
+![df_health_pib](assets/df_health_pib.jpeg)
 
 Fizemos diversas outras queries cruzando as tabelas do Banco, as quais podem ser visualizadas no [Notebook Queries e Análise](notebooks/queries_analise.ipynb). Todas as queries implementadas estão nesse notebook, organizadas por categoria.
 
