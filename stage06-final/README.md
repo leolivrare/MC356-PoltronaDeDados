@@ -19,20 +19,50 @@ Utilizamos diferentes bancos de dados (COVID-19 API, WorldBank) e relacionamos d
 Devido a pandemia presente no ano de 2020, achamos relevante analisar dados referentes ao novo Coronavírus a fim de relacioná-los às características socioeconômicas de diversos países. Dessa forma, podemos utilizar dados referentes à saúde, educação e índices econômicos para determinar como tais fatores refletem na resposta de cada país perante a pandemia.
 
 ## Detalhamento do Projeto
-> Apresente aqui detalhes da análise. Nesta seção ou na seção de Resultados podem aparecer destaques de código como indicado a seguir. Note que foi usada uma técnica de highlight de código, que envolve colocar o nome da linguagem na abertura de um trecho com `~~~`, tal como `~~~python`.
-> Os destaques de código devem ser trechos pequenos de poucas linhas, que estejam diretamente ligados a alguma explicação. Não utilize trechos extensos de código. Se algum código funcionar online (tal como um Jupyter Notebook), aqui pode haver links. No caso do Jupyter, preferencialmente para o Binder abrindo diretamente o notebook em questão.
 
-~~~python
-df = pd.read_excel("/content/drive/My Drive/Colab Notebooks/dataset.xlsx");
-sns.set(color_codes=True);
-sns.distplot(df.Hemoglobin);
-plt.show();
-~~~
+Procuramos coletar o maior número de dados sobre a situação de cada país, visando determinar os efeitos que a situação política e socioeconômica dele influenciou na sua resposta e atuação contra a pandemia do coronavírus. Sendo assim, nossas duas principais fontes de dados foram a API da covid-19 e os datasets do World Bank. 
+
+Como esses dados possuem formatos diferentes, World Bank possui uma organização tabular, enquanto a API da covid uma estrutura hierárquica, optamos por armazenar esses dados em bancos de dados diferentes. Os dados da API da covid-19 foram armazenados em uma instância do MongoDB na AWS, enquanto os dados do World Bank foram armazenados em várias tabelas em um banco postgreSQL, também na hospedado na AWS.
+
+Para facilitar o deploy e configurações dos serviços na AWS utilizamos dois serviços, o [ElephantSQL](https://www.elephantsql.com/) e o [MongoAtlas](https://www.mongodb.com/cloud/atlas). Esses serviços nos possibilitaram configurar clusters que atendem nossas necessidades de forma gratuita.
+
+Os dados fornecidos pela API do covid-19, são em sua maior parte dados sobre a quantidade de casos e mortes, para cada país. Infelizmente outros dados mais complexos não estavam disponíveis de forma gratuita nessa API, impossibilitando sua aquisição. 
+
+Após feitas as requisições para a API do covid, os dados foram tratados, removendo campos desnecessários e inseridos no cluster online do MongoDB
+
+[Notebook Covid](notebooks/covid_queries.ipynb)
+
+Já os datasets do World Bank nos forneceram uma quantidade muito grande de dados e indicadores socioeconômicos, educacionais, de saúde e geográficos de diversos países. No entanto, vários desses dados estavam incompletos para determinados países ou anos. Sendo assim foi feito um trabalho para filtrar, selecionar, separar e agrupar os diversos dados, de modo que sua organização fosse clara e de fácil utilização posterior.
+
+[Notebook Tratamento Dados World Bank](notebooks/tratamento_dados_worldBank.ipynb)
+
+Após tratados, os dados do World Bank foram inseridos em suas respectivas tabelas no cluster online do postgreSQL.
+
+[Notebook Insere Dados World Bank](notebooks/insere_dados_worldBank_no_postgres.ipynb)
+
+Após todos os dados terem sido tratados e inseridos em seus respectivos bancos, precisávamos fazer queries desses dados e relacioná-los. Como os dados estão em formatos diferentes, nossa solução para relacioná-los foi trazer esses dados para formatos nativos do Python, possibilitando seu relacionamento. Sendo assim utilizamos a biblioteca SQLAlchemy para realizar as queries dos dados no Postgres e a biblioteca PyMongo para fazer as queries dos dados armazenados no MongoDB.
+
+Após a obtenção de todos os dados em estruturas nativas do python, eles foram transformados em dataframes do Pandas, visando facilitar sua manipulação. Finalmente fizemos as análises comparando os dados de número de mortes e indicadores de cada país. Tais análises serão discutidas de maneira mais profunda na seção resultados e discussões.
+
+[Notebook Queries e Análise](notebooks/queries_analise.ipynb)
+
 
 ## Evolução do Projeto
-> Relatório de evolução, descrevendo as evoluções na modelagem do projeto, dificuldades enfrentadas, mudanças de rumo, melhorias e lições aprendidas. Referências aos diagramas, modelos e recortes de mudanças são bem-vindos.
-> Podem ser apresentados destaques na evolução dos modelos conceitual e lógico. O modelo inicial e intermediários (quando relevantes) e explicação de refinamentos, mudanças ou evolução do projeto que fundamentaram as decisões.
-> Relatar o processo para se alcançar os resultados é tão importante quanto os resultados.
+
+Passamos por várias mudanças ao longo do projeto, sendo a principal a opção por usar clusters online para os bancos, ao invés de bancos em memória.
+
+A princípio fizemos os requests para a API da covid-19 e transformamos os dados de formato hierárquico para tabular, gerando csv's para os dados e os salvando em um banco relacional em memória.
+
+No entanto, posteriormente quando fomos trabalhar com os dados do World Bank percebemos que esses também estavam em formato tabular. Sendo assim, visando utilizar uma maior variedade de bancos de dados, optamos por manter os dados da covid em formato hierárquico, ao invés de os transformar em formato tabular, e deixar os dados do World Bank em formato tabular.
+
+O próximo problema que foi enfrentado foi como relacionar dados armazenados em formatos distintos. Não seria possível fazer um join entre uma tabela de um banco relacional e uma coleção de um banco não relacional. A solução para esse problema foi utilizar Python como um denominador comum. Ao fazer as queries a partir do Python, podíamos obter os dois tipos de dados em estruturas nativas do python, possibilitando seu relacionamento.
+
+Decidido que seriam usados dois bancos distintos e que as queries seriam feitas a partir de um notebook em Python, passamos a olhar mais para a infraestrutura dos bancos. Optamos por utilizar clusters online para ambos os bancos. O cluster online tem várias vantagens em relação a um banco em memória, como a capacidade de armazenamento por exemplo. Porém a principal vantagem para nós era a separação entre código dos inserts e queries e o banco de fato. Dessa forma, é possível que qualquer um com as credenciais do banco se conecte a este a partir de qualquer plataforma, evitando fazer os inserts e criação de tabelas novamente, o que aconteceria em um banco em memória.
+
+Utilizamos os serviços [ElephantSQL](https://www.elephantsql.com/) e [MongoAtlas](https://www.mongodb.com/cloud/atlas) para auxiliar no deploy das instâncias dos bancos na AWS. Além disso, durante o processo de desenvolvimento utilizamos ferramentas como o DBeaver para auxiliar a monitorar e configurar os bancos.
+
+Uma última dificuldade enfrentada foi a pouca quantidade de indicadores fornecidos pela API da covid, infelizmente alguns indicadores mais interessantes eram bloqueados por pagamento. Sendo assim nos baseamos principalmente na taxa de mortalidade do país para fazer as queries.
+
 
 ## Resultados e Discussão
 > Apresente os resultados da forma mais rica possível, com gráficos e tabelas. Mesmo que o seu código rode online em um notebook, copie para esta parte a figura estática. A referência a código e links para execução online pode ser feita aqui ou na seção de detalhamento do projeto (o que for mais pertinente).
