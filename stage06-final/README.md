@@ -80,7 +80,7 @@ Para o modelo Tabular utilizamos, como já descrito nos itens anteriores, uma in
 
 #### Estrutura das tabelas no Banco Relacional:
 
-![Estrutura Postgres](tabelas_postgres.png)
+![Estrutura Postgres](assets/tabelas_postgres.png)
 
 Todas as tabelas que estão no banco do PostgreSQL contém dados sobre os países, sendo divididas por tabelas geográficas, economicas, educacionais, saúde e socioeconomicas. Como extraímos os dados para todos esses indicadores do World Bank para três anos distintos, 2017 até 2019, estruturamos uma tabela de cada indicador para cada ano, como pode ser visto na imagem acima.
 
@@ -134,7 +134,7 @@ order by health_expenditure desc
 ```
 A qual teve como resultado:
 
-![health_expenditure_pib_query](image.png)
+![health_expenditure_pib_query](assets/saude_query.png)
 
 ##### Query sobre dados de Educação:
 ```
@@ -153,7 +153,7 @@ order by research_and_development_expenditure desc
 ```
 A qual teve como resultado:
 
-![research_query](research_query.jpeg)
+![research_query](assets/research_query.jpeg)
 
 ##### Query sobre dados Socio Econômicos:
 ```
@@ -172,7 +172,7 @@ order by unemployment desc
 ```
 A qual teve como resultado:
 
-![unemployment_query](socio_economics_query.jpeg)
+![unemployment_query](assets/socio_economics_query.jpeg)
 
 ##### Query sobre dados Geograficos:
 ```
@@ -191,7 +191,7 @@ order by pop_density desc
 ```
 A qual teve como resultado:
 
-![pop_density_query](pop_density_query.jpeg)
+![pop_density_query](assets/pop_density_query.jpeg)
 
 ##### Query sobre Investimento em Saúde em Relação ao PIB:
 ```
@@ -252,7 +252,7 @@ Esse código extrai todos os dados necessários para as nossas análises do banc
 Agora, vamos apresentar as análises que foram implementadas cruzando os resultados obtidos pelas queries descritas acima, relacionando os dados do Banco Relacional com o MongoDB. Dessa forma, segue então as análises feitas:
 
 #### Países em relação a taxa de mortalidade
-![paises_taxa_mort](paises_taxa_mort.jpeg)
+![paises_taxa_mort](assets/paises_taxa_mort.jpeg)
 
 Essa tabela será utilizada em todas as análises apresentadas nesse trabalho, onde a mesma contém todos os dados do banco Mongo. Nela temos, para cada país, dados importantes de como a doença avançou e o indicador mais importante para as análises, a taxa de mortalidade.
 
