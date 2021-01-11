@@ -302,11 +302,13 @@ Portanto, novamente, vemos um melhor desempenho por parte dos países com mais g
 ## Programa de extração e conversão de dados atualizado
 
 [Dados World Bank](notebooks/insere_dados_worldBank_no_postgres.ipynb)
+
 [Tratamento Dados World Bank](notebooks/tratamento_dados_worldBank.ipynb)
 
 ## Conjunto de queries para todos os modelos
 
 [Queries COVID](notebooks/covid_queries.ipynb)
+
 [Queries relacionando dados do World Bank aos dados do COVID](notebooks/queries_analise.ipynb)
 
 
