@@ -301,12 +301,14 @@ Portanto, novamente, vemos um melhor desempenho por parte dos países com mais g
 
 ## Programa de extração e conversão de dados atualizado
 
-> Coloque um link para o arquivo do notebook que executa a extração e conversão de dados. Ele estará dentro da pasta `notebook`. Se por alguma razão o código não for executável no Jupyter, coloque na pasta `src`. Se a extração e conversão envolverem queries executadas através de uma interface de um SGBD não executável no Jupyter, como o Cypher, apresente na forma de markdown.
+[Dados World Bank](notebooks/insere_dados_worldBank_no_postgres.ipynb)
+[Tratamento Dados World Bank](notebooks/tratamento_dados_worldBank.ipynb)
 
 ## Conjunto de queries para todos os modelos
 
-> Acrescente um link para o(s) arquivo(s) do(s) notebook(s) que executa(m) as queries para cada um dos modelos lógicos. Eles estarão dentro da pasta `notebook`. Se por alguma razão o código não for executável no Jupyter, coloque na pasta `src`. Se as queries forem executadas através de uma interface de um SGBD não executável no Jupyter, como o Cypher, apresente na forma de markdown.
-> Apresente todas as suas queries em versão final, mesmo que tenham aparecido em etapas anteriores.
+[Queries COVID](notebooks/covid_queries.ipynb)
+[Queries relacionando dados do World Bank aos dados do COVID](notebooks/queries_analise.ipynb)
+
 
 ## Bases de Dados
 | Base   |  Link  |  Descrição |
